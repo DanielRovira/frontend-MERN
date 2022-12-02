@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function Item({ item, updateDocument, deleteDocument }) {
 
     const [tempText, setTempText] = useState(item.text)
+    
 
     return (
         <div className='row'>

@@ -5,6 +5,7 @@ import Item from './components/item'
 function App() {
 
 const [itens, setItens] = useState([])
+const [filterItens, setFilterItens] = useState({ filter: false, active: false });
 
     function getData() {
         fetch('http://localhost:3000/todo/list', { method:"GET" })
@@ -49,18 +50,20 @@ const [itens, setItens] = useState([])
         getData()
     },[])
 
+    const itensToSow = filterItens.filter ? itens.filter(item => item.active === filterItens.active) : itens
+
   return (
     <div className="wrapper">
         <h1>To Do App</h1>
 
-        {itens.map(item => {
+        {itensToSow.map(item => {
                 return <Item key={item._id} item={item} updateDocument={updateDocument} deleteDocument={deleteDocument} />
             })
         }
 
-        <button>Todos</button>
-        <button>Pendentes</button>
-        <button>Concluídos</button>
+        <button onClick={() => setFilterItens({ filter: false })} >Todos</button>
+        <button onClick={() => setFilterItens({ filter: true, active: true })} >Pendentes</button>
+        <button onClick={() => setFilterItens({ filter: true, active: false })} >Concluídos</button>
 
         <button onClick={insertDocument}>Inserir novo To-do</button>
 
