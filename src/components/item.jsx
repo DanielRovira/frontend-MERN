@@ -10,7 +10,8 @@ function Item({ item, updateDocument, deleteDocument }) {
             <input
                 type="checkbox"
                 defaultChecked={!item.active}
-                onClick={() => { updateDocument({...item, active: !item.active}) }} />
+                onClick={() => { updateDocument({...item, active: !item.active}) }}
+            />
 
             {((item.edit) || (item.text === "")) ? (
                 <input
@@ -25,6 +26,7 @@ function Item({ item, updateDocument, deleteDocument }) {
                 style={item.active ? {} : { textDecoration: "line-through" }}
                 >{item.text}</span>
             }
+            
             <button onClick={() => { deleteDocument(item) }}>Apagar</button>
         </div>
     )

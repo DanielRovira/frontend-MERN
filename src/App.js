@@ -54,19 +54,35 @@ const [filterItens, setFilterItens] = useState({ filter: false, active: false })
 
   return (
     <div className="wrapper">
-        <h1>To Do App</h1>
+        <div className='to-do-list'>
+            
+            <h1>To Do App</h1>
 
-        {itensToSow.map(item => {
-                return <Item key={item._id} item={item} updateDocument={updateDocument} deleteDocument={deleteDocument} />
-            })
-        }
+            <div className="buttonRow">
+                <button
+                onClick={() => setFilterItens({ filter: false })} 
+                style={ filterItens.filter ? {} : {fontWeight: "bold"} }
+                >Todos</button>
+                <button
+                onClick={() => setFilterItens({ filter: true, active: true })}
+                style={ filterItens.filter && filterItens.active ? {fontWeight: "bold"} : {} }
+                >Pendentes</button>
+                <button
+                onClick={() => setFilterItens({ filter: true, active: false })}
+                style={ filterItens.filter && !filterItens.active ? {fontWeight: "bold"} : {} }
+                >Concluídos</button>
+            </div>
+            
+            {itensToSow.map(item => {
+                    return <Item key={item._id} item={item} updateDocument={updateDocument} deleteDocument={deleteDocument} />
+                })
+            }
 
-        <button onClick={() => setFilterItens({ filter: false })} >Todos</button>
-        <button onClick={() => setFilterItens({ filter: true, active: true })} >Pendentes</button>
-        <button onClick={() => setFilterItens({ filter: true, active: false })} >Concluídos</button>
+            <div className="buttonRow">
+                <button onClick={insertDocument}>Inserir novo To-do</button>
+            </div>
 
-        <button onClick={insertDocument}>Inserir novo To-do</button>
-
+        </div>
     </div>
   );
 }
