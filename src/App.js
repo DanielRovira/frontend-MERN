@@ -21,11 +21,11 @@ const [itens, setItens] = useState(
     ]
 )
 
-    const getData = () => {
-        fetch('http://localhost:3000/todo/list', { method:"GET", mode: "no-cors" })
+    function getData() {
+        fetch('http://localhost:3000/todo/list', { method:"GET" })
         .then(response => response.json())
         .then(data => setItens(data))
-    }
+    };
 
     useEffect(() => {
         getData()
