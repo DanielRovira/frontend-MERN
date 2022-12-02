@@ -54,7 +54,7 @@ const [filterItens, setFilterItens] = useState({ filter: false, active: false })
 
   return (
     <div className="wrapper">
-        <div className='to-do-list'>
+        <div>
             
             <h1>To Do App</h1>
 
