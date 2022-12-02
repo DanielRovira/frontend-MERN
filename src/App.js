@@ -4,22 +4,7 @@ import Item from './components/item'
 
 function App() {
 
-const [itens, setItens] = useState(
-    [
-        // {
-        //     "_id": "234324",
-        //     "text": "teste",
-        //     "edit": false,
-        //     "active": true
-        // },
-        // {
-        //     "_id": "234231",
-        //     "text": "teste",
-        //     "edit": false,
-        //     "active": true
-        // }
-    ]
-)
+const [itens, setItens] = useState([])
 
     function getData() {
         fetch('http://localhost:3000/todo/list', { method:"GET" })
